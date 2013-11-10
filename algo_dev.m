@@ -22,10 +22,12 @@ b1 = [1/8, 3/8, 0, 3/8];
 
 lowpass_filt = filter(b1,a1,exp_data);
 
-t = 1:length(exp_data);
-plot(t,exp_data,'-.',t,lowpass_filt,'-'), grid on
-legend('Original Data', 'Low-passed Data', 2);
-
+%Plot to see how it looks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+t1 = 1:length(exp_data);
+%plot(t,exp_data,'-.',t,lowpass_filt,'-'), grid on
+%legend('Original Data', 'Low-passed Data', 2);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Design FIR filter as 2 * (d[n+1] - d[n])
 
@@ -33,6 +35,14 @@ a2 = 1;
 b2 = [0, 2, -2, 0];
 
 highpass_filt = filter(b2,a2,exp_data);
-figure;
-plot(t,exp_data,'-.',t,highpass_filt,'-'), grid on
+
+%first_scale = downsample(highpass_filt, 2);
+
+%Plot to see how it looks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% figure;
+%t2 = 1:length(first_scale);
+plot(t1,exp_data,'-.',t1,highpass_filt,'-'), grid on
 legend('Original Data', 'High-passed Data', 2);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
