@@ -16,7 +16,7 @@
 % t1 = 1:length(exp_data);
 
 %%% ECG Data from MIT Database %%%
-[t1,exp_data] = rdsamp('mitdb/102', 1,21800,15000); % 21600 points which corresponds to 60 s @ 360 sampling rate
+[t1,exp_data] = rdsamp('mitdb/102', 1,3800,200); % 3600 points which corresponds to 10 s @ 360 sampling rate
 
 % Zero-mean
 exp_data = exp_data - mean(exp_data(:));
