@@ -1,16 +1,7 @@
-% Frequency of the Experiment to read
-frequency = 500;
-% Select the graphics toolkit
-%graphics_toolkit ('fltk');
-% add the experiments path
-%addpath('C:\\Users\\aadithyaprakash\\Desktop\\Matlab');
-% Load the data
-file = ['micro_',  num2str(frequency), '.txt'];
-data = load('micro_250.txt');
+function [ ] = fft_check( Fs, data, title_graph )
+
 % Define the axis from which calculate the fft
 axis = 1;
-% Define the sample frequency, in Hz
-Fs = 16000;
 % Define the stabilization period (percentage)
 Stab = 0.1;
 % Calculate the period
@@ -32,12 +23,12 @@ fftData =(abs(fft(data,NFFT)));
 %shift to zero frequency
 fftshift(fftData);
 % Calculate the frequency vector
-freq = Fs*[0:NFFT/2-1]/NFFT;
+freq = Fs*(0:NFFT/2-1)/NFFT;
 % Plot the frequency spectrum
 figure;
 subplot(2,1,1);
 plot(freq,fftData(1:NFFT/2, axis));
-title('Single-Sided Amplitude Spectrum of Data');
+title(title_graph);
 xlabel('Frequency (Hz)');
 ylabel('|Y(f)|');
 % Plot the original data
@@ -46,5 +37,6 @@ plot(t,data(:, axis)) ;
 title('Original Data');
 xlabel('Time (s)');
 ylabel('Amplitude');
-wavwrite(data, frequency,'micro_250.wav');
+end
+
 
